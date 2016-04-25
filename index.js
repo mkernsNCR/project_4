@@ -26,7 +26,7 @@ app.get("/lists", function (req, res) {
 });
 
 app.get("/lists/:author", function (req, res) {
-  var disiredAuthor = req.params.author;
+  var desiredAuthor = req.params.author;
   var listOutput;
   db.lists.forEach(function (list) {
     if(desiredAuthor === list.author){
