@@ -18,6 +18,12 @@ app.get("/", function (req, res) {
   res.render("app-welcome");
 });
 
+app.get("/lists", function (req, res) {
+  res.render("lists-index", {
+    numLists: 32
+  });
+});
+
 app.listen(3001, function () {
   console.log("I'm aliiiiiiiive!");
 });
