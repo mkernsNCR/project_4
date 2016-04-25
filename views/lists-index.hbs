@@ -1,1 +1,6 @@
 <h2>{{lists.length}} adventures!</h2>
+{{#each lists as |list index|}}
+<h3>
+  <a href="/lists/{{list.title}}">{{list.title}}</a>
+</h3>
+{{/each}}
