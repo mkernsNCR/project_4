@@ -26,12 +26,15 @@ app.get("/lists", function (req, res) {
 });
 
 app.get("/lists/:author", function (req, res) {
-  var data = {
-    title: req.params.title,
-    author: Matt
-  }
+  var disiredAuthor = req.params.author;
+  var listOutput;
+  db.lists.forEach(function (list) {
+    if(desiredAuthor === list.author){
+      listOutput = list;
+    }
+  });
   res.render("lists-show", {
-    list: data
+    list: listOutput
   });
 });
 
