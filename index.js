@@ -25,6 +25,16 @@ app.get("/lists", function (req, res) {
   });
 });
 
+app.get("/lists/:author", function (req, res) {
+  var data = {
+    title: req.params.title,
+    author: Matt
+  }
+  res.render("lists-show", {
+    list: data
+  });
+});
+
 app.listen(3001, function () {
   console.log("I'm aliiiiiiiive!");
 });
