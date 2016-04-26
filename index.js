@@ -17,7 +17,7 @@ app.use("/assets", express.static("public"));
 
 app.use("/assets", express.static("bower_components"));
 
-app.get("/", function (req, res) {
+app.get("/*", function (req, res) {
   res.sendFile(__dirname + "/public/index.html");
   // res.render("app-welcome");
 });
