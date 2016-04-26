@@ -28,6 +28,12 @@ app.delete("/api/lists/:title", function (req, res) {
   });
 });
 
+app.patch("/api/lists/:title", function (req, res) {
+  List.findOneAndUpdate(req.params, req.body, {new: true}).then(function (list) {
+    res.json(list);
+  });
+});
+
 app.post("/api/lists", function (req, res) {
   List.create(req.body).then(function (list) {
     res.json(list);

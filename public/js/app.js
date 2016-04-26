@@ -32,7 +32,9 @@
 
   listFactory.$inject = ["$resource"];
   function listFactory($resource) {
-    var List = $resource("/api/lists/:title");
+    var List = $resource("/api/lists/:title", {}, {
+      update: {method: "PATCH"}
+    });
     return List;
   }
 
@@ -54,6 +56,11 @@
     vm.delete = function () {
       List.remove($stateParams, function () {
         $state.go("listsIndex");
+      });
+    }
+    vm.update = function () {
+      List.update($stateParams, vm.list, function (response) {
+        $state.go("listsShow", response);
       });
     }
   }
