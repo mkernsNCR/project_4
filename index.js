@@ -16,6 +16,12 @@ app.get("/api/lists", function (req, res) {
   });
 });
 
+app.get("/api/lists/:title", function (req, res) {
+  List.findOne(req.params).then(function (list) {
+    res.json(list);
+  });
+});
+
 app.post("/api/lists", function (req, res) {
   List.create(req.body).then(function (list) {
     res.json(list);

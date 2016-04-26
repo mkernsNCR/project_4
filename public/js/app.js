@@ -32,7 +32,7 @@
 
   listFactory.$inject = ["$resource"];
   function listFactory($resource) {
-    var List = $resource("/api/lists");
+    var List = $resource("/api/lists/:title");
     return List;
   }
 
@@ -48,8 +48,9 @@
   }
 
   listsShowCtrl.$inject = ["$stateParams"];
-  function listsShowCtrl($stateParams) {
+  function listsShowCtrl($stateParams, List) {
     var vm = this;
-    vm.list = $stateParams;
+    vm.list = List.get($stateParams, function (response) {
+    });
   }
 })();
