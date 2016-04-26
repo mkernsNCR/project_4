@@ -1,20 +1,11 @@
 var express = require("express");
-// var hbs = require("express-handlebars");
+var parser = require("body-parser");
 var mongoose = require("./db/connection");
 var app = express();
 
 var List = mongoose.model("List");
 
-
-// app.set("view engine", "hbs");
-//
-// app.engine(".hbs", hbs({
-//   extname: ".hbs",
-//   partialsDir: "views/",
-//   layoutsDir: "views/",
-//   defaultLayout: "layout-main"
-// }));
-
+app.use(parser.json({urlencoded: true}));
 app.use("/assets", express.static("public"));
 
 app.use("/assets", express.static("bower_components"));
@@ -25,29 +16,15 @@ app.get("/api/lists", function (req, res) {
   });
 });
 
-app.get("/*", function (req, res) {
-  res.sendFile(__dirname + "/public/index.html");
-  // res.render("app-welcome");
+app.post("/api/lists", function (req, res) {
+  List.create(req.body).then(function (list) {
+    res.json(list);
+  });
 });
 
-// app.get("/lists", function (req, res) {
-//   res.render("lists-index", {
-//     lists: db.lists
-//   });
-// });
-//
-// app.get("/lists/:author", function (req, res) {
-//   var desiredAuthor = req.params.author;
-//   var listOutput;
-//   db.lists.forEach(function (list) {
-//     if(desiredAuthor === list.author){
-//       listOutput = list;
-//     }
-//   });
-//   res.render("lists-show", {
-//     list: listOutput
-//   });
-// });
+app.get("/*", function (req, res) {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 app.listen(3001, function () {
   console.log("I'm aliiiiiiiive!");

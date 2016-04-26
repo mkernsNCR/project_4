@@ -40,6 +40,11 @@
   function listsIndexCtrl(List) {
     var vm = this;
     vm.lists = List.query();
+    vm.create = function () {
+      List.save(vm.newList, function (response) {
+        vm.lists.push(response);
+      })
+    }
   }
 
   listsShowCtrl.$inject = ["$stateParams"];
