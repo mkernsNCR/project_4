@@ -1,5 +1,6 @@
-// (function() {
-//   angular.module('bucketList', []);
-// })()
+"use strict";
 
-console.log("Working!");
+(function() {
+  angular
+  .module('bucketList', []);
+})();

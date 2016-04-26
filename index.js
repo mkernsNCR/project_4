@@ -15,8 +15,11 @@ app.engine(".hbs", hbs({
 
 app.use("/assets", express.static("public"));
 
+app.use("/assets", express.static("bower_components"));
+
 app.get("/", function (req, res) {
-  res.render("app-welcome");
+  res.sendFile(__dirname + "/public/index.html");
+  // res.render("app-welcome");
 });
 
 app.get("/lists", function (req, res) {
