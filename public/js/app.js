@@ -3,9 +3,11 @@
 (function() {
   angular
   .module('bucketList', [
-    "ui.router"
+    "ui.router",
+    "ngResource"
   ])
   .config(Router)
+  .factory("List", listFactory)
   .controller("listsIndexController", listsIndexCtrl)
   .controller("listsShowController", listsShowCtrl)
 
@@ -28,13 +30,16 @@
     $urlRouterProvider.otherwise("/");
   }
 
-  function listsIndexCtrl() {
+  listFactory.$inject = ["$resource"];
+  function listFactory($resource) {
+    var List = $resource("/api/lists");
+    return List;
+  }
+
+  listsIndexCtrl.$inject = ["List"];
+  function listsIndexCtrl(List) {
     var vm = this;
-    vm.lists = [
-      {"title": "Project X"},
-      {"title": "Trip Around The World!"},
-      {"title": "Wombats in the Wild!"}
-    ];
+    vm.lists = List.query();
   }
 
   listsShowCtrl.$inject = ["$stateParams"];
