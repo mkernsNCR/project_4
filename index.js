@@ -22,6 +22,12 @@ app.get("/api/lists/:title", function (req, res) {
   });
 });
 
+app.delete("/api/lists/:title", function (req, res) {
+  List.findOneAndRemove(req.params).then(function () {
+    res.json({success: true});
+  });
+});
+
 app.post("/api/lists", function (req, res) {
   List.create(req.body).then(function (list) {
     res.json(list);

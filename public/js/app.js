@@ -47,10 +47,14 @@
     }
   }
 
-  listsShowCtrl.$inject = ["$stateParams"];
-  function listsShowCtrl($stateParams, List) {
+  listsShowCtrl.$inject = ["$stateParams", "List", "$state"];
+  function listsShowCtrl($stateParams, List, $state) {
     var vm = this;
-    vm.list = List.get($stateParams, function (response) {
-    });
+    vm.list = List.get($stateParams);
+    vm.delete = function () {
+      List.remove($stateParams, function () {
+        $state.go("listsIndex");
+      });
+    }
   }
 })();
