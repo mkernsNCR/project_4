@@ -17,6 +17,7 @@ app.get("/api/lists", function (req, res) {
 });
 
 app.get("/api/lists/:title", function (req, res) {
+  console.log("params:", req.params)
   List.findOne(req.params).then(function (list) {
     res.json(list);
   });

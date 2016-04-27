@@ -1,7 +1,14 @@
 [
   {
     "title": "Project X",
-    "author": "Naruto"
+    "author": "Naruto",
+    "entries": [
+      {
+        "description": "Pompeii",
+        "imageUrl": "http://www.tourismplaceinfo.com/wp-content/uploads/2011/04/Pompeii-Buried-Roman-City-Italy.jpg"
+      }
+    ]
+
   },
   {
     "title": "Trip Around The World!",

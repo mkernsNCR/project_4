@@ -26,7 +26,7 @@
       templateUrl: "/assets/html/lists-show.html",
       controller: "listsShowController",
       controllerAs: "lShowVM"
-    });
+    })
     $urlRouterProvider.otherwise("/");
   }
 
@@ -45,14 +45,20 @@
     vm.create = function () {
       List.save(vm.newList, function (response) {
         vm.lists.push(response);
-      })
+      });
     }
   }
 
-  listsShowCtrl.$inject = ["$stateParams", "List", "$state"];
-  function listsShowCtrl($stateParams, List, $state) {
+  listsShowCtrl.$inject = ["$stateParams", "List", "Entry", "$state"];
+  function listsShowCtrl($stateParams, List, Entry, $state) {
     var vm = this;
     vm.list = List.get($stateParams);
+    vm.entry = Entry.get($stateParams);
+    vm.create = function () {
+      Entry.save(vm.newEntry, function (response) {
+        vm.entry.push(response);
+      });
+    }
     vm.delete = function () {
       List.remove($stateParams, function () {
         $state.go("listsIndex");

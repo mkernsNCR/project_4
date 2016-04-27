@@ -1,9 +1,18 @@
 <div data-ng-if="lShowVM.list.title">
   <h2>{{lShowVM.list.title}}</h2>
   <input type="text" data-ng-model="lShowVM.list.title" />
-  <button type="button" data-ng-click="lShowVM.update()">Edit</button>
+  <button type="button" data-ng-click="lShowVM.update()">Update</button>
   <button type="button" data-ng-click="lShowVM.delete()">Delete</button>
 </div>
+
+<div data-ng-repeat= "entry in lShowVM.list.entries" >
+  {{entry.description}}
+  <img src="{{entry.imageUrl}}" />
+  <input type="text" data-ng-model="lShowVM.entries.description" />
+  <button type="button" data-ng-click="lShowVM.update()">Update</button>
+  <button type="button" data-ng-click="lShowVM.delete()">Delete</button>
+</div>
+
 <div data-ng-if="!lShowVM.list.title">
   <h2>This Bucket List does not exist!</h2>
 </div>
