@@ -80,11 +80,16 @@
         $state.go("listsIndex");
       });
     }
+
+    // My attempt at deleting an individual entry
     vm.deleteEntry = function(entry) {
       console.log("del Entry:", entry);
       console.log(entry._id);
-      Entry.remove({id: entry._id});
+      Entry.remove({id: entry._id}, function () {
+        $state.go("listsIndex");
+      });
     }
+
     vm.update = function () {
       List.update($stateParams, vm.list, function (updatedList) {
         $state.go("listsShow", updatedList);

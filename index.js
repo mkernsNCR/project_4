@@ -29,10 +29,13 @@ app.delete("/api/lists/:title", function (req, res) {
   });
 });
 
-app.delete("/api/list/entries/:id", function (req, res) {
-  console.log(req.params.id);
-  List.entries.findOneAndRemove(req.params.id).then(function () {
-    res.json({success: true});
+// My attempt at deleting an individual entry
+app.delete("/api/entries/:id", function (req, res) {
+  List.findOne({"entries._id": req.params.id}).then(function(list) {
+    list.entries.remove(req.params.id);
+    list.save().then(function(){
+      res.json(list)
+    });
   });
 });
 
