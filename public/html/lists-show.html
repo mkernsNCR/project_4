@@ -8,10 +8,13 @@
 <div data-ng-repeat= "entry in lShowVM.list.entries" >
   {{entry.description}}
   <img src="{{entry.imageUrl}}" />
-  <input type="text" data-ng-model="lShowVM.entries.description" />
-  <button type="button" data-ng-click="lShowVM.update()">Update</button>
-  <button type="button" data-ng-click="lShowVM.delete()">Delete</button>
+  <button type="button" data-ng-click="lShowVM.deleteEntry(entry)">Delete</button>
 </div>
+
+<h3>Add New Entry</h3>
+<input type="text" data-ng-model="lShowVM.newEntry.description" placeholder="Description" />
+<input type="text" data-ng-model="lShowVM.newEntry.imageUrl" placeholder="Image Url" />
+<button type="button" data-ng-click="lShowVM.addEntry()">Add Entry</button>
 
 <div data-ng-if="!lShowVM.list.title">
   <h2>This Bucket List does not exist!</h2>

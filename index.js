@@ -29,7 +29,15 @@ app.delete("/api/lists/:title", function (req, res) {
   });
 });
 
+app.delete("/api/list/entries/:id", function (req, res) {
+  console.log(req.params.id);
+  List.entries.findOneAndRemove(req.params.id).then(function () {
+    res.json({success: true});
+  });
+});
+
 app.patch("/api/lists/:title", function (req, res) {
+  console.log("update list:", req.params, req.body)
   List.findOneAndUpdate(req.params, req.body, {new: true}).then(function (list) {
     res.json(list);
   });

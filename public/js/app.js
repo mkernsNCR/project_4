@@ -8,6 +8,7 @@
   ])
   .config(Router)
   .factory("List", listFactory)
+  .factory("Entry", entryFactory)
   .controller("listsIndexController", listsIndexCtrl)
   .controller("listsShowController", listsShowCtrl)
 
@@ -38,6 +39,12 @@
     return List;
   }
 
+  entryFactory.$inject = ["$resource"];
+  function entryFactory($resource) {
+    var Entry = $resource("/api/entries/:id");
+    return Entry;
+  }
+
   listsIndexCtrl.$inject = ["List"];
   function listsIndexCtrl(List) {
     var vm = this;
@@ -53,20 +60,34 @@
   function listsShowCtrl($stateParams, List, Entry, $state) {
     var vm = this;
     vm.list = List.get($stateParams);
-    vm.entry = Entry.get($stateParams);
-    vm.create = function () {
-      Entry.save(vm.newEntry, function (response) {
-        vm.entry.push(response);
-      });
+    vm.newEntry = {};
+    vm.addEntry = function () {
+      // add this entry to list.entries,
+      //  then save list
+      // then show changes
+      vm.list.entries.push(angular.copy(vm.newEntry));
+      console.log("After adding entry:", vm.list)
+
+      List.update($stateParams, vm.list, function (savedList) {
+        console.log("savedList:", savedList)
+        vm.newEntry = {}; // reset newEntry for form
+        vm.list = savedList;
+        console.log(savedList);
+      })
     }
     vm.delete = function () {
       List.remove($stateParams, function () {
         $state.go("listsIndex");
       });
     }
+    vm.deleteEntry = function(entry) {
+      console.log("del Entry:", entry);
+      console.log(entry._id);
+      Entry.remove({id: entry._id});
+    }
     vm.update = function () {
-      List.update($stateParams, vm.list, function (response) {
-        $state.go("listsShow", response);
+      List.update($stateParams, vm.list, function (updatedList) {
+        $state.go("listsShow", updatedList);
       });
     }
   }
