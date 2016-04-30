@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang='en' ng-app='bucketList'>
 <head>
- <meta charset="UTF-8">
- <title>BucketList</title>
- <link rel="stylesheet" href="/assets/css/styles.css">
- <script src="/assets/angular/angular.min.js"></script>
- <script src="/assets/angular-ui-router/release/angular-ui-router.min.js"></script>
- <script src="/assets/angular-resource/angular-resource.min.js"></script>
- <script src="/assets/js/app.js"></script>
- <base href="/" />
+  <meta charset="UTF-8">
+  <title>BucketList</title>
+  <link rel="stylesheet" href="/assets/bootstrap/dist/css/bootstrap.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="/assets/angular/angular.min.js"></script>
+  <script src="/assets/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="/assets/angular-resource/angular-resource.min.js"></script>
+  <script src="/assets/js/app.js"></script>
+  <base href="/" />
 </head>
-<body data-ng-app="bucketList">
-  <h1><a data-ui-sref="listsIndex">BucketList!</a></h1>
-  <div data-ui-view></div>
-</body>
+<div class="container">
+  <body data-ng-app="bucketList">
+    <video autoplay poster="http://www.leeabbamonte.com/wp-content/uploads/2012/07/travel-the-world.jpeg">
+      <source src="/assets/videos/bucketlist.mp4" type="video/mp4" />
+    </video>
+    <h1><a data-ui-sref="listsIndex">BucketList!</a></h1>
+    <div data-ui-view></div>
+  </body>
+</div>
 </html>

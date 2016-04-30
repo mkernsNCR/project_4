@@ -6,12 +6,18 @@
 </div>
 
 <div data-ng-repeat= "entry in lShowVM.list.entries" >
-  {{entry.description}}
-  <img src="{{entry.imageUrl}}" />
-  <button type="button" data-ng-click="lShowVM.deleteEntry(entry)">Delete</button>
+  <div class="row">
+    <div class="col-md-6 entry">
+      <p>{{entry.description}}</p>
+    </div>
+    <div class="col-md-6">
+      <img class="img-responsive img-thumbnail" src="{{entry.imageUrl}}" />
+      <button type="button" data-ng-click="lShowVM.deleteEntry(entry)">Delete</button>
+    </div>
+  </div>
 </div>
 
-<h3>Add New Entry</h3>
+<h2>Add New Entry</h2>
 <input type="text" data-ng-model="lShowVM.newEntry.description" placeholder="Description" />
 <input type="text" data-ng-model="lShowVM.newEntry.imageUrl" placeholder="Image Url" />
 <button type="button" data-ng-click="lShowVM.addEntry()">Add Entry</button>

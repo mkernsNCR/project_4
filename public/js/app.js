@@ -86,7 +86,7 @@
       console.log("del Entry:", entry);
       console.log(entry._id);
       Entry.remove({id: entry._id}, function () {
-        $state.go("listsIndex");
+        $state.reload("listsShow");
       });
     }
 

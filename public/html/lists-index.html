@@ -1,6 +1,6 @@
 <h2>{{lIndexVM.lists.length}} adventures!</h2>
 
-<h3 data-ng-repeat="list in lIndexVM.lists"><a data-ui-sref="listsShow(list)">{{list.title}}</a></h3>
-
-<input type="text" data-ng-model="lIndexVM.newList.title" />
+<input type="text" data-ng-model="lIndexVM.newList.title" placeholder="Title" />
 <button type="button" data-ng-click="lIndexVM.create()">Create new Bucket List</button>
+
+<h3 data-ng-repeat="list in lIndexVM.lists"><a data-ui-sref="listsShow(list)">{{list.title}}</a></h3>

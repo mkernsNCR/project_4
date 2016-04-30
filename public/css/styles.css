@@ -1,3 +1,57 @@
 body {
+  background-image: url("http://1.bp.blogspot.com/-qigUpCIZDY0/TW0Qk7SmLKI/AAAAAAAAABc/N8cml8z_Mfk/s1600/crumpled-paper.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+video {
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  background-image: url("http://www.leeabbamonte.com/wp-content/uploads/2012/07/travel-the-world.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 5;
+}
+
+p {
+  font-size: 1.2em;
+}
+
+img {
+  width: 100%;
+}
+
+a, a:visited {
+  color: rgba(46, 46, 46, 0.68);
+  font-size: 2em;
+}
+
+a:hover {
+  color: rgba(46, 46, 46, 0.68);
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.container, h1>a {
   text-align: center;
+  color: rgba(46, 46, 46, 0.68);
+  font-size: 3em;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-family: 'Amatic SC', cursive;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.entry {
+  padding-top: 125px;
 }
