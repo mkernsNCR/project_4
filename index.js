@@ -29,7 +29,7 @@ app.delete("/api/lists/:title", function (req, res) {
   });
 });
 
-// My attempt at deleting an individual entry
+// Deletes an individual entry
 app.delete("/api/entries/:id", function (req, res) {
   List.findOne({"entries._id": req.params.id}).then(function(list) {
     list.entries.remove(req.params.id);
