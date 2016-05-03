@@ -57,6 +57,8 @@ app.get("/*", function (req, res) {
   res.sendFile(__dirname + "/public/index.html");
 });
 
+var port = process.env.PORT || 3001;
 app.listen(app.get("port"), function () {
-  console.log("I'm aliiiiiiiive!");
+  console.log("I'm aliiiiiiiive");
+  console.log("Listening on " + port);
 });
