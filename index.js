@@ -5,6 +5,7 @@ var app = express();
 
 var List = mongoose.model("List");
 
+app.set("port", process.env.PORT || 3001);
 app.use(parser.json({urlencoded: true}));
 app.use("/assets", express.static("public"));
 
@@ -56,6 +57,6 @@ app.get("/*", function (req, res) {
   res.sendFile(__dirname + "/public/index.html");
 });
 
-app.listen(3001, function () {
+app.listen(app.get("port"), function () {
   console.log("I'm aliiiiiiiive!");
 });
