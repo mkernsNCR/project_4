@@ -14,7 +14,10 @@ var ListSchema = {
 mongoose.model("List", ListSchema);
 mongoose.model("Entry", EntrySchema);
 
-mongoose.connect("mongodb://localhost/bucketList");
-
+if(process.env.NODE_ENV == "production"){
+  mongoose.connect(process.env.MONGOLAB_URI);
+}else{
+  mongoose.connect("mongodb://localhost/bucketList");
+}
 
 module.exports = mongoose;
